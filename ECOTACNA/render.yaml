@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: ecotacna-backend
+    env: docker
+    dockerfilePath: ./EcoTacnaSpringBootJPA/Dockerfile
+    dockerContext: ./EcoTacnaSpringBootJPA
+    plan: free
+    healthCheckPath: /ecotacna/api/public/config # Ruta básica de verificación si la hay
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: SPRING_PROFILES_ACTIVE
+        value: supabase
+      - key: CAPTCHA_ENABLED
+        value: true
+      # Las credenciales y otros secrets debes configurarlos en la interfaz de Render
+      # - key: JWT_SECRET
+      #   sync: false

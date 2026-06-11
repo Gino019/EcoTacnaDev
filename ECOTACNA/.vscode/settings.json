@@ -1,0 +1,4 @@
+{
+    "markdown.validate.enabled": true,
+    "java.compile.nullAnalysis.mode": "automatic"
+}
