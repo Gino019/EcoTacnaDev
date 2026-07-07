@@ -3,7 +3,10 @@ const resolveBaseUrl = () => {
   if (configuredUrl) return configuredUrl.replace(/\/$/, "");
 
   if (typeof window === "undefined") return "/ecotacna/api";
-  return `${window.location.protocol}//${window.location.hostname}:8082/ecotacna/api`;
+  
+  const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+  const port = isLocalhost ? ":8082" : "";
+  return `${window.location.protocol}//${window.location.hostname}${port}/ecotacna/api`;
 };
 
 export const BASE_URL = resolveBaseUrl();

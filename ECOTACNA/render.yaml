@@ -5,7 +5,7 @@ services:
     dockerfilePath: ./EcoTacnaSpringBootJPA/Dockerfile
     dockerContext: ./EcoTacnaSpringBootJPA
     plan: free
-    healthCheckPath: /ecotacna/api/public/config # Ruta básica de verificación si la hay
+    healthCheckPath: /ecotacna/api/health # Ruta básica de verificación (Health Check)
     envVars:
       - key: PORT
         value: 8080

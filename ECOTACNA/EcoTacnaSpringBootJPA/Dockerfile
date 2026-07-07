@@ -7,10 +7,13 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Etapa de ejecución (Run)
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:17-jre
 
 # Instalar dependencias necesarias para Java AWT (generación de imágenes del Captcha)
-RUN apk add --no-cache fontconfig ttf-dejavu
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    fontconfig \
+    fonts-dejavu-core \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
